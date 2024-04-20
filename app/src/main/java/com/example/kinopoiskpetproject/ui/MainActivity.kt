@@ -1,10 +1,10 @@
-package com.example.kinopoiskpetproject
+package com.example.kinopoiskpetproject.ui
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.kinopoiskpetproject.R
+import com.example.kinopoiskpetproject.ui.screen.CoreFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
