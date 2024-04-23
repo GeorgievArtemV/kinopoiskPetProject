@@ -9,7 +9,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 class MyApp: Application() {
-    //lateinit var filmAPI:FilmAPI
     override fun onCreate() {
         super.onCreate()
         configureRetrofit()
