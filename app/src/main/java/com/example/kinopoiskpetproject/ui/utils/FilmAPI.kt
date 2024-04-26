@@ -15,5 +15,5 @@ interface FilmAPI {
     suspend fun getFilms(): Response<FilmList>
     @Headers("X-API-KEY:" + " e30ffed0-76ab-4dd6-b41f-4c9da2b2735b", "accept: application/json")
     @GET("api/v2.2/films/{id}")
-    fun getFilmDetails(@Path("id") filmId: Int): Call<FilmDetails?>?
+    suspend fun getFilmDetails(@Path("id") filmId: Int): Response<FilmDetails?>?
 }

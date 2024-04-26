@@ -11,8 +11,10 @@
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mainLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:visibility="visible">
 
             <ImageView
                 android:id="@+id/imageDetails"
@@ -32,6 +34,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageDetails" />
 
             <TextView
+
                 android:paddingHorizontal="10dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/roboto"
@@ -42,6 +45,16 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/nameDetails"
                 />
+
+            <Button
+                android:id="@+id/setFavor"
+                android:text="Добавить в избранное"
+                android:backgroundTint="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/descriptionDetails" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
