@@ -5,21 +5,29 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.screen.DetailsFragment">
+    <ProgressBar
+        android:id="@+id/loading_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/mainLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="visible">
+            android:visibility="invisible">
 
             <ImageView
                 android:id="@+id/imageDetails"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="500dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -34,7 +42,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageDetails" />
 
             <TextView
-
                 android:paddingHorizontal="10dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/roboto"
@@ -50,11 +57,13 @@
                 android:id="@+id/setFavor"
                 android:text="Добавить в избранное"
                 android:backgroundTint="@color/black"
+                android:layout_marginTop="50dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descriptionDetails" />
+                app:layout_constraintTop_toBottomOf="@+id/descriptionDetails"
+                />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

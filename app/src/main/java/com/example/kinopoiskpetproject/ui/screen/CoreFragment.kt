@@ -43,7 +43,11 @@ class CoreFragment : Fragment(), OnItemClick,OnLongItemClick {
             jobSetting.join()
         }
         binding.favorite.setOnClickListener(View.OnClickListener {
-
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.placeHolder, FavoriteFragment())
+                .addToBackStack("first")
+                .commit()
+            Toast.makeText(context, "Фильм добавлен в избранное", Toast.LENGTH_LONG).show()
         })
         return binding.root
     }
@@ -61,6 +65,6 @@ class CoreFragment : Fragment(), OnItemClick,OnLongItemClick {
 
 
     override fun onLongItemClick(item: Int) {
-        Toast.makeText(context, "Фильм добавлен в избранное", Toast.LENGTH_LONG).show();
+        Toast.makeText(context, "Фильм добавлен в избранное", Toast.LENGTH_LONG).show()
     }
 }

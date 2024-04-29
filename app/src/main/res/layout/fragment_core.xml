@@ -12,10 +12,20 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"/>
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/filmlist"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            android:visibility="gone"/>
         <ImageButton
             android:id="@+id/favorite"
             android:layout_width="50dp"
@@ -25,18 +35,6 @@
             android:background="@drawable/baseline_auto_awesome_24"
             android:backgroundTint="#BF213E"
             />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/filmlist"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingTop="50dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/favorite"
-            android:visibility="gone"/>
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layoutNoInternet"
             android:layout_width="300dp"

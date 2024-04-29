@@ -9,6 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 class MyApp: Application() {
+
     override fun onCreate() {
         super.onCreate()
         configureRetrofit()
