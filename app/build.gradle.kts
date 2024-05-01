@@ -48,6 +48,10 @@ dependencies {
     implementation ("com.squareup.okhttp3:logging-interceptor:4.12.0")
     implementation ("com.squareup.retrofit2:adapter-rxjava2:2.7.1")
     implementation ("com.facebook.shimmer:shimmer:0.5.0@aar")
+    implementation(libs.androidx.legacy.support.v4)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.fragment.ktx)
     val room_version = "2.6.1"
     implementation("androidx.room:room-rxjava2:$room_version")
     implementation("androidx.room:room-runtime:$room_version")

@@ -11,13 +11,12 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.kinopoiskpetproject.R
 import com.example.kinopoiskpetproject.model.Film
 import com.example.kinopoiskpetproject.ui.utils.OnItemClick
-import com.example.kinopoiskpetproject.ui.utils.OnLongItemClick
 import com.facebook.shimmer.Shimmer
 import com.facebook.shimmer.Shimmer.AlphaHighlightBuilder
 import com.facebook.shimmer.ShimmerDrawable
 
 
-class FilmAdapter(val filmList:List<Film>, val click:OnItemClick, val clickLong:OnLongItemClick): RecyclerView.Adapter<FilmAdapter.ViewHolder>() {
+class FilmAdapter(val filmList:List<Film>, val click:OnItemClick): RecyclerView.Adapter<FilmAdapter.ViewHolder>() {
 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -37,15 +36,6 @@ class FilmAdapter(val filmList:List<Film>, val click:OnItemClick, val clickLong:
                         click.onItemClick(pos)
                     }
                 }
-            }
-            itemView.setOnLongClickListener {
-                if (clickLong != null) {
-                    val pos = getAdapterPosition()
-                    if (pos != RecyclerView.NO_POSITION) {
-                        clickLong.onLongItemClick(pos)
-                    }
-                }
-                true
             }
             val shimmer = AlphaHighlightBuilder()
                 .setDuration(1800)

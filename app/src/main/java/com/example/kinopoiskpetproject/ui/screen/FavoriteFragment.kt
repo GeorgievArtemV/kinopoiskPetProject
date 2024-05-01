@@ -1,23 +1,28 @@
 package com.example.kinopoiskpetproject.ui.screen
 
+import androidx.fragment.app.viewModels
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import com.example.kinopoiskpetproject.MyApp
 import com.example.kinopoiskpetproject.R
-import com.example.kinopoiskpetproject.database.AppDataBase
-import com.example.kinopoiskpetproject.databinding.FragmentFavoriteBinding
-
 
 class FavoriteFragment : Fragment() {
-    lateinit var binding:FragmentFavoriteBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentFavoriteBinding.inflate(inflater,container,false)
 
-        return binding.root
+    private val viewModel: FavoriteViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // TODO: Use the ViewModel
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        return inflater.inflate(R.layout.fragment_favorite, container, false)
     }
 }
