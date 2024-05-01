@@ -12,6 +12,7 @@ class CoreViewModel: ViewModel() {
 
 
     val listLiveData = MutableLiveData<MutableList<Film>>()
+    val booleanLiveData = MutableLiveData<Boolean>()
     init {
         getListAPI()
     }
@@ -20,10 +21,8 @@ class CoreViewModel: ViewModel() {
         scope.launch {
             val result = MyApp().configureRetrofit().getFilms()
             listLiveData.postValue(result.body()!!.items)
+            booleanLiveData.postValue(true)
         }
     }
 
-    override fun onCleared() {
-        super.onCleared()
-    }
 }

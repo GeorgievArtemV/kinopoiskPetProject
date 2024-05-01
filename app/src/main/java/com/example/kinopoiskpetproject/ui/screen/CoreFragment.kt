@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kinopoiskpetproject.R
 import com.example.kinopoiskpetproject.databinding.FragmentCoreBinding
@@ -22,28 +21,32 @@ class CoreFragment : Fragment(), OnItemClick {
         val recycler:RecyclerView = binding.filmlist
         var filmAdapter: FilmAdapter?
 
-        vm.listLiveData.observe(viewLifecycleOwner, Observer {
-            filmAdapter = FilmAdapter(it,this@CoreFragment)
+        vm.listLiveData.observe(viewLifecycleOwner) {
+            filmAdapter = FilmAdapter(it, this@CoreFragment)
             recycler.adapter = filmAdapter
-        })
+        }
+        vm.booleanLiveData.observe(viewLifecycleOwner) {
+            if (it == true) {
+                binding.loadingProgressBar.visibility = View.INVISIBLE
+                binding.filmlist.visibility = View.VISIBLE
+            }
+        }
 
-        binding.loadingProgressBar.visibility = View.INVISIBLE
-        binding.filmlist.visibility = View.VISIBLE
-
-
-        binding.favorite.setOnClickListener(View.OnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction().replace(R.id.placeHolder, FavoriteFragment()).addToBackStack("first").commit()
-        })
+        binding.favorite.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.placeHolder, FavoriteFragment()).addToBackStack("first").commit()
+        }
         return binding.root
     }
 
     override fun onItemClick(item: Int) {
-        vm.listLiveData.observe(viewLifecycleOwner, Observer {
+        vm.listLiveData.observe(viewLifecycleOwner) {
             val bundle = Bundle()
             bundle.putInt("FilmId", it[item].kinopoiskId)
             val details = DetailsFragment()
             details.setArguments(bundle)
-            requireActivity().supportFragmentManager.beginTransaction().replace(R.id.placeHolder, details).addToBackStack("first").commit()
-        })
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.placeHolder, details).addToBackStack("first").commit()
+        }
     }
 }
