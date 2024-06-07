@@ -6,13 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kinopoiskpetproject.R
 import com.example.kinopoiskpetproject.databinding.FragmentCoreBinding
 import com.example.kinopoiskpetproject.ui.utils.OnItemClick
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class CoreFragment : Fragment(), OnItemClick {
     private lateinit var binding: FragmentCoreBinding
     private val vm: CoreViewModel by activityViewModels()

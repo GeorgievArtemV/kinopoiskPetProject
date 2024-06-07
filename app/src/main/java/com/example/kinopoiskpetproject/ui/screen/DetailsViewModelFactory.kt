@@ -1,11 +1,8 @@
 package com.example.kinopoiskpetproject.ui.screen
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import dagger.assisted.AssistedFactory
 
-class DetailsViewModelFactory(var id:Int): ViewModelProvider.Factory {
-
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return DetailsViewModel(id) as T
-    }
+@AssistedFactory
+interface DetailsViewModelFactory {
+    fun create(id: Int): DetailsViewModel
 }
