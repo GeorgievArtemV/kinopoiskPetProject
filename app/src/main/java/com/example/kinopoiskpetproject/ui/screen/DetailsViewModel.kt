@@ -7,7 +7,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class DetailsViewModel(val id:Int):ViewModel() {
+class DetailsViewModel(var id:Int):ViewModel() {
     val posterLiveData = MutableLiveData<String?>()
     val nameLiveData = MutableLiveData<String?>()
     val descLiveData = MutableLiveData<String?>()
