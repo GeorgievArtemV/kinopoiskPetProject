@@ -1,8 +1,9 @@
 package com.example.kinopoiskpetproject.ui.screen
 
+import com.example.kinopoiskpetproject.model.Film
 import dagger.assisted.AssistedFactory
 
 @AssistedFactory
 interface DetailsViewModelFactory {
-    fun create(id: Int): DetailsViewModel
+    fun create(film: Film): DetailsViewModel
 }

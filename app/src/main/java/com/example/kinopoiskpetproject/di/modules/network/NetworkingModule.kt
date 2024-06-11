@@ -13,11 +13,14 @@ import retrofit2.converter.gson.GsonConverterFactory
 @InstallIn(SingletonComponent::class)
 object NetworkingModule {
     @Provides
-    fun provideRetrofit():Retrofit{
+    fun provideClient(): OkHttpClient {
         val client = OkHttpClient()
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
-        client.newBuilder().addInterceptor(interceptor).build()
+        return client.newBuilder().addInterceptor(interceptor).build()
+    }
+    @Provides
+    fun provideRetrofit(client: OkHttpClient):Retrofit{
         return Retrofit.Builder()
             .baseUrl("https://kinopoiskapiunofficial.tech/")
             .client(client)

@@ -1,28 +1,31 @@
 package com.example.kinopoiskpetproject.ui.screen
 
-import androidx.fragment.app.viewModels
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.kinopoiskpetproject.R
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.kinopoiskpetproject.databinding.FragmentFavoriteBinding
+import com.example.kinopoiskpetproject.ui.utils.FavoriteAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FavoriteFragment : Fragment() {
+    private lateinit var binding: FragmentFavoriteBinding
+    private val viewModel: FavoriteViewModel by activityViewModels()
 
-
-    private val viewModel: FavoriteViewModel by viewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.fragment_favorite, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        binding = FragmentFavoriteBinding.inflate(inflater, container, false)
+        val recycler: RecyclerView = binding.favoritefilmlist
+        var favoriteAdapter: FavoriteAdapter?
+        viewModel.setLiveData.observe(viewLifecycleOwner){
+            favoriteAdapter = FavoriteAdapter(it)
+            recycler.layoutManager = GridLayoutManager(context,2)
+            recycler.adapter = favoriteAdapter
+        }
+        return binding.root
     }
 }

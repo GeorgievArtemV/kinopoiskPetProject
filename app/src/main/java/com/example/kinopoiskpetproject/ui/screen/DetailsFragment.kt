@@ -1,6 +1,8 @@
 package com.example.kinopoiskpetproject.ui.screen
 
+import android.os.Build
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +12,7 @@ import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.kinopoiskpetproject.databinding.FragmentDetailsBinding
+import com.example.kinopoiskpetproject.model.Film
 import com.facebook.shimmer.Shimmer
 import com.facebook.shimmer.Shimmer.AlphaHighlightBuilder
 import com.facebook.shimmer.ShimmerDrawable
@@ -23,12 +26,13 @@ class DetailsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentDetailsBinding.inflate(inflater, container, false)
         val bundle = this.arguments
-        val proba = bundle!!.getInt("FilmId")
+        val parsing = bundle!!.parcelable<Film>("FilmId")
+
 
         val vm by activityViewModels<DetailsViewModel> (
             extrasProducer = {
                 defaultViewModelCreationExtras.withCreationCallback<DetailsViewModelFactory> {
-                   it.create(proba) } })
+                   it.create(parsing!!) } })
 
         vm.posterLiveData.observe(viewLifecycleOwner) {
             Glide.with(binding.imageDetails).load(it).placeholder(getShimmerDrawable())
@@ -52,8 +56,9 @@ class DetailsFragment : Fragment() {
             }
         }
 
-        binding.descriptionDetails.setOnClickListener {
+        binding.setFavor.setOnClickListener {
             Toast.makeText(activity, "Фильм добавлен в избранное", Toast.LENGTH_SHORT).show()
+            vm.insertData()
         }
 
         return binding.root
@@ -74,5 +79,9 @@ class DetailsFragment : Fragment() {
         val shimmerDrawable = ShimmerDrawable()
         shimmerDrawable.setShimmer(shimmer)
         return shimmerDrawable
+    }
+    inline fun <reified T : Parcelable> Bundle.parcelable(key: String): T? = when {
+        Build.VERSION.SDK_INT >= 33 -> getParcelable(key, T::class.java)
+        else -> @Suppress("DEPRECATION") getParcelable(key) as? T
     }
 }

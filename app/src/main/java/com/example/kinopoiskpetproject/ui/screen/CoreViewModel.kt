@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CoreViewModel @Inject constructor(
-    private val filmAPI: FilmAPI
+    private val filmAPI: FilmAPI,
 ): ViewModel() {
     val listLiveData = MutableLiveData<MutableList<Film>>()
     val booleanLiveData = MutableLiveData<Boolean>()
@@ -27,5 +27,4 @@ class CoreViewModel @Inject constructor(
             booleanLiveData.postValue(true)
         }
     }
-
 }

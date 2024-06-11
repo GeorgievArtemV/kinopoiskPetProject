@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kinopoiskpetproject.R
 import com.example.kinopoiskpetproject.databinding.FragmentCoreBinding
+import com.example.kinopoiskpetproject.ui.utils.FilmAdapter
 import com.example.kinopoiskpetproject.ui.utils.OnItemClick
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -43,7 +44,7 @@ class CoreFragment : Fragment(), OnItemClick {
     override fun onItemClick(item: Int) {
         vm.listLiveData.observe(viewLifecycleOwner) {
             val bundle = Bundle()
-            bundle.putInt("FilmId", it[item].kinopoiskId)
+            bundle.putParcelable("FilmId", it[item])
             val details = DetailsFragment()
             details.setArguments(bundle)
             requireActivity().supportFragmentManager.beginTransaction()
