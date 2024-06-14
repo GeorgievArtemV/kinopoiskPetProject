@@ -1,6 +1,7 @@
 package com.example.kinopoiskpetproject.ui.screen
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,9 +24,11 @@ class FavoriteFragment : Fragment() {
         var favoriteAdapter: FavoriteAdapter?
         viewModel.setLiveData.observe(viewLifecycleOwner){
             favoriteAdapter = FavoriteAdapter(it)
+            Log.d("TAGA", it.toString())
             recycler.layoutManager = GridLayoutManager(context,2)
             recycler.adapter = favoriteAdapter
         }
+
         return binding.root
     }
 }

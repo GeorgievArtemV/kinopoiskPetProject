@@ -14,8 +14,6 @@ import com.facebook.shimmer.Shimmer
 import com.facebook.shimmer.Shimmer.AlphaHighlightBuilder
 import com.facebook.shimmer.ShimmerDrawable
 
-
-
 class FavoriteAdapter(val favoriteList:List<Film>/*, val click:onItemClick*/): RecyclerView.Adapter<FavoriteAdapter.ViewHolder>() {
 
 
