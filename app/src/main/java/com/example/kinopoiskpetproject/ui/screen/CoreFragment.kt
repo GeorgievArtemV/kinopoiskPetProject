@@ -1,6 +1,7 @@
 package com.example.kinopoiskpetproject.ui.screen
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,17 +24,26 @@ class CoreFragment : Fragment(), OnItemClick {
         val recycler:RecyclerView = binding.filmlist
         var filmAdapter: FilmAdapter?
 
+
         vm.listLiveData.observe(viewLifecycleOwner) {
             filmAdapter = FilmAdapter(it, this@CoreFragment)
             recycler.adapter = filmAdapter
         }
         vm.booleanLiveData.observe(viewLifecycleOwner) {
             if (it == true) {
+                binding.layoutNoInternet.visibility = View.INVISIBLE
                 binding.loadingProgressBar.visibility = View.INVISIBLE
                 binding.filmlist.visibility = View.VISIBLE
+                Log.d("TAG", "1")
+            } else  {
+                binding.loadingProgressBar.visibility = View.INVISIBLE
+                binding.layoutNoInternet.visibility = View.VISIBLE
+                Log.d("TAG", "2")
             }
         }
-
+        binding.buttonNoInternet.setOnClickListener {
+            vm.getListAPI()
+        }
         binding.favorite.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.placeHolder, FavoriteFragment()).addToBackStack("first").commit()

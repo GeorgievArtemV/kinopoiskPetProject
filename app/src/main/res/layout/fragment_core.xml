@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.screen.CoreFragment"
-    android:screenOrientation="portrait">
+    tools:context=".ui.screen.CoreFragment">
 
     <ProgressBar
         android:id="@+id/loading_progress_bar"
@@ -72,6 +71,7 @@
             <Button
                 android:text="@string/povtorit"
                 android:textSize="15sp"
+                android:layout_marginBottom="50dp"
                 android:id="@+id/buttonNoInternet"
                 android:layout_width="125dp"
                 android:layout_height="50dp"

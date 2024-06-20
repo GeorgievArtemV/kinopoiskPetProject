@@ -7,5 +7,4 @@ import com.example.kinopoiskpetproject.model.Film
 
 @Database(entities = [Film::class], version = 1)
 abstract class AppDataBase : RoomDatabase() {
-
 }
